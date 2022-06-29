@@ -1,3 +1,6 @@
+#ifndef HEAPS_H
+#define HEAPS_H
+
 #include <iostream>
 #include <algorithm>
 #include <iterator>
@@ -192,3 +195,5 @@ class maxHeap{
             }
         }
 };
+
+#endif

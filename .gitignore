@@ -1,2 +1,11 @@
 #Ignorar todos .exe
 *.exe
+
+#Ignorar todos json e .vscode
+*.json
+*.vscode
+
+#ignorar alguns arquivos de teste
+fila.cpp
+grafoiterator.hpp
+testeGrafo.cpp
