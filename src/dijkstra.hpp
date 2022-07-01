@@ -7,11 +7,9 @@
 #include <limits>
 
 void dijkstra(grafo& G, int source){
-    std::vector<int> dist, prev, vertices;
+    std::vector<int> dist(G.nVerts(), std::numeric_limits<int>::max()), prev(G.nVerts(), -1), vertices;
 
     for(int i = 0; i < G.nVerts(); i++){
-        dist.push_back(std::numeric_limits<int>::max());
-        prev.push_back(-1);
         vertices.push_back(i);
     }
 
@@ -31,10 +29,9 @@ void dijkstra(grafo& G, int source){
         }
     }
 
-    for(int i = 0; i < prev.size(); i++){
-        std::cout << "Vertice "<< i << " " << prev[i] << " e " << dist[i] <<'\n';
+    for(size_t i = 0; i < prev.size(); i++){
+        std::cout << i+1 << ":" << dist[i] << " ";
     }
-
 
 }
 

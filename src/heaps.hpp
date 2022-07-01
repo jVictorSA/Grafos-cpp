@@ -37,6 +37,14 @@ class djikstraHeap{
             std::cout << "\n";
         }
 
+        bool has(int k){
+            for(int i = 0; i < tamHeap; i++){
+                if (dados[i].first == k){
+                    return true;
+                }
+            }
+            return false;
+        }
 
         void minHeapify(int i){
             int l, r, menor;

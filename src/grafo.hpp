@@ -2,6 +2,7 @@
 #define GRAFO_HPP
 
 #include <vector>
+#include <limits>
 
 #define NAOVISITADO -1
 
@@ -32,6 +33,25 @@ class grafo{
                     indices[i][j] = 0;
         }
 
+        grafo(int verts, bool _isFW){
+            int i;
+            vertices = verts;
+            arestas = 0;
+            mark = new int[verts];
+
+            for(i = 0; i < verts; i++)
+                mark[i] = NAOVISITADO;
+
+            indices = (int**) new int*[verts];
+
+            for(i = 0; i < verts; i++)
+                indices[i] = new int[verts];
+
+            for(i = 0; i < verts; i++)
+                for(int j = 0; j < verts; j++)
+                    indices[i][j] = std::numeric_limits<int>::max();
+        }
+
         ~grafo(){
             delete [] mark;
             for(int i = 0; i < arestas; i++)
@@ -56,6 +76,9 @@ class grafo{
 
             return vertices;
         }
+
+        int** getMatrix(){return indices;}
+
         std::vector<int> getNeighbours(int v){
             std::vector<int> vec;
             for (int i = 0; i < vertices; i++)
@@ -69,6 +92,7 @@ class grafo{
             if(indices[v1][v2] == 0){
                 arestas++;
                 indices[v1][v2] = peso;
+                indices[v2][v1] = peso;
             }
         }
         //inline void delAresta(int v1, int v2) {}
