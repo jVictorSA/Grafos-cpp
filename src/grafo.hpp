@@ -71,7 +71,7 @@ class grafo{
                 indices[v1][v2] = peso;
             }
         }
-        inline void delAresta(int v1, int v2) {}
+        //inline void delAresta(int v1, int v2) {}
         inline bool haAresta(int v1, int v2) {return indices[v1][v2] != 0;}
         inline int getPeso(int v1, int v2) {return indices[v1][v2];}
         inline int getMark(int v) {return mark[v];}

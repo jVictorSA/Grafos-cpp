@@ -1,6 +1,6 @@
 #ifndef DFS_HPP
 #define DFS_HPP
-#include "grafo.h"
+#include "grafo.hpp"
 #include <iostream>
 #include <vector>
 

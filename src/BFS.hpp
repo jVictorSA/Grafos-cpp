@@ -1,7 +1,7 @@
 #ifndef BFS_HPP
 #define BFS_HPP
 
-#include "grafo.h"
+#include "grafo.hpp"
 #include "fila.hpp"
 #include <iostream>
 #include <vector>

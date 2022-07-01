@@ -1,13 +1,104 @@
-#ifndef HEAPS_H
-#define HEAPS_H
+#ifndef HEAPS_HPP
+#define HEAPS_HPP
 
 #include <iostream>
 #include <algorithm>
 #include <iterator>
 #include <vector>
 #include <limits>
+#include <utility>
 
 using std::cout;
+
+class djikstraHeap{
+    private:
+        std::vector <std::pair <int, int>> dados;
+        int tam, tamHeap;
+         
+    public:
+        djikstraHeap(std::vector<int>& v, std::vector<int>& dist, int size){
+            for(int i = 0; i < size; i++){
+                dados.push_back(std::make_pair(v[i], dist[i]));
+            }
+            tam = tamHeap = size;
+
+            buildMinHeap();
+        }
+
+        inline int parent(int i) { return i/2; }
+        inline int left(int i) { return 2*i + 1; }
+        inline int right (int i) { return 2*i + 2; }
+        inline bool empty(){ return tam==0; }
+        inline int getMin() { return dados[0].first; }
+        void print(){
+            for (std::pair<int, int> x : dados){
+                std::cout << x.first << " e " << x.second << " - ";
+            }
+            std::cout << "\n";
+        }
+
+
+        void minHeapify(int i){
+            int l, r, menor;
+            l = r = -1;
+            if (left(i) < tamHeap){
+                l = left(i);
+            }
+            if (right(i) < tamHeap){
+                r = right(i);
+            }
+            if(l != -1 && l <= tam && dados[l].second < dados[i].second){
+                menor = l;
+            }else{
+                menor =i;
+            }
+            if(r != -1 && r <= tam && dados[r].second < dados[menor].second){
+                menor = r;
+            }
+            if(menor != i){
+                std::pair<int, int> temp = dados[i];
+                dados[i] = dados[menor];
+                dados[menor] = temp;
+                minHeapify(menor);
+            }
+        }
+        void buildMinHeap(){
+            for(int i = tam/2; i >= 0; i--){
+                minHeapify(i);
+            }
+        }
+        void insert(int value, int vertex){
+            tam = tamHeap += 1;
+            dados.push_back(std::make_pair(vertex, std::numeric_limits<int>::max()));
+            decreaseKey(tam-1, value);
+        }
+        std::pair<int, int> removeMin(){
+            if(tamHeap < 1){
+                std::cout << "Tamanho minimo do heap\n";
+                return std::make_pair(-1, -1);
+            }
+            std::pair<int, int> min = dados[0];
+            dados[0] = dados[tamHeap-1];
+            tam = tamHeap -= 1;
+            dados.pop_back();
+            minHeapify(0);
+            return min;
+        }
+
+        void decreaseKey(int i, int value){
+            if(value > dados[i].second){
+                std::cout << "Valor maior que o atual! \n";
+                return;
+            }
+            dados[i].second = value;
+            while(i > 0 && dados[parent(i)].second > dados[i].second){
+                std::pair<int, int> temp = dados[i];
+                dados[i] = dados[parent(i)];
+                dados[parent(i)]  = temp;
+                i = parent(i);
+            }
+        }
+};
 
 class minHeap{
     private:
@@ -28,6 +119,10 @@ class minHeap{
                 cout << x << " ";
             }
             cout << "\n";
+        }
+
+        bool empty(){
+            return tam==0;
         }
 
         void minHeapify(int i){
