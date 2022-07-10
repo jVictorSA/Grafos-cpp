@@ -3,6 +3,7 @@
 
 #include <vector>
 #include <limits>
+#include <iostream>
 
 #define NAOVISITADO -1
 
@@ -80,6 +81,8 @@ class grafo{
             //indices[v2][v1] = peso;
 
         }
+
+        void getAresta(int v1, int v2) {std::cout << v1 << " " << v2 << " " << getPeso(v1,v2) << "\n";}
         //inline void delAresta(int v1, int v2) {}
         inline bool haAresta(int v1, int v2) {return indices[v1][v2] != 0;}
         inline int getPeso(int v1, int v2) {return indices[v1][v2];}

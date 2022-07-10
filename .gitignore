@@ -9,5 +9,8 @@
 fila.cpp
 grafoiterator.hpp
 testeGrafo.cpp
+CMakeCache.txt
+CMakeList.txt
 heaps.cpp
 floydWarshall.hpp
+*CMakeFiles
