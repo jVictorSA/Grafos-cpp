@@ -1,11 +1,15 @@
 # Grafos-cpp
-Implementação de alguns algoritmos de processamento de grafos, para a disciplina de Teoria dos Grafos.</br></br>
+Implementação de alguns algoritmos de processamento de grafos em C++, para a disciplina de Teoria dos Grafos.</br></br>
 Cada algoritmo está presente em sua respectiva pasta e.g. o algoritmo de Dijkstra está na pasta "dijkstra".</br></br>
 Para compilar um algoritmo, entre na respectiva pasta e execute o comando:
 ````
 make all
 ````
 E o algoritmo será compilado em um executável .exe.</br></br>
+Por padrão o compilador utilizado é o Clang++, cas deseje utilizar o g++, execute:
+````
+make all CC=g++
+````
 Todo algoritmo precisa de um arquivo de entrada para ser executado. O arquivo deve seguir este formato:
 ````
 <n = numero de vértices> <e = números de arestas>
