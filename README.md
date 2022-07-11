@@ -6,6 +6,7 @@ Para compilar um algoritmo, entre na respectiva pasta e execute o comando:
 make all
 ````
 E o algoritmo será compilado em um executável .exe.</br></br>
+**Veja que apenas o algoritmo presente na pasta será compilado. Logo, para compilar todos, todos devem ser compilados separadamente, cada um em sua respectiva pasta**</br></br>
 Por padrão o compilador utilizado é o Clang++, cas deseje utilizar o g++, execute:
 ````
 make all CC=g++
