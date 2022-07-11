@@ -3,6 +3,7 @@
 #include <iostream>
 #include <map>
 #include <fstream>
+#include <cstring>
 
 void showHelp();
 
